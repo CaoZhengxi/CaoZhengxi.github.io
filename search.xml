@@ -4,6 +4,19 @@
   
     
     <entry>
+      <title>testPost</title>
+      <link href="/2019/08/01/testPost/"/>
+      <url>/2019/08/01/testPost/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>SpringBoot2.X整合Oauth2访问时返回401 </title>
       <link href="/2019/07/21/20190721-SpringBoot-integration-Oauth2-Return-401-on-login-%E2%80%9C/"/>
       <url>/2019/07/21/20190721-SpringBoot-integration-Oauth2-Return-401-on-login-%E2%80%9C/</url>
