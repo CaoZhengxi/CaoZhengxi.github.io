@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>SpringBoot2.X整合Oauth2访问时返回401 </title>
+      <link href="/2019/07/21/20190721-SpringBoot-integration-Oauth2-Return-401-on-login-%E2%80%9C/"/>
+      <url>/2019/07/21/20190721-SpringBoot-integration-Oauth2-Return-401-on-login-%E2%80%9C/</url>
+      
+        <content type="html"><![CDATA[<h1 id="QUESTION"><a href="#QUESTION" class="headerlink" title="QUESTION"></a>QUESTION</h1><p>SpringBoot2.X整合了Oauth2访问<code>/oauth/token</code>时出现返回401 Unauthorized</p><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line"><span class="attr">"timestamp"</span>: <span class="string">"2019-07-21T15:22:06.576+0000"</span>,</span><br><span class="line">    <span class="attr">"status"</span>: <span class="number">401</span>,</span><br><span class="line">    <span class="attr">"error"</span>: <span class="string">"Unauthorized"</span>,</span><br><span class="line">    <span class="attr">"message"</span>: <span class="string">"Unauthorized"</span>,</span><br><span class="line">    <span class="attr">"path"</span>: <span class="string">"/oauth/token"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>并且Console打印<code>Encoded password does not look like BCrypt</code></p><h1 id="ANSWER"><a href="#ANSWER" class="headerlink" title="ANSWER"></a>ANSWER</h1><p>SpringBoot2.X中在设置ClientSecret时需要加密<code>secret(passwordEncoder.encode(client.getClientSecret()))</code></p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Autowired</span></span><br><span class="line"><span class="keyword">private</span> PasswordEncoder passwordEncoder;</span><br><span class="line"></span><br><span class="line">......</span><br><span class="line"> </span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 客户端配置</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">configure</span><span class="params">(ClientDetailsServiceConfigurer clients)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    InMemoryClientDetailsServiceBuilder builder = clients.inMemory();</span><br><span class="line">    <span class="keyword">if</span> (ArrayUtils.isNotEmpty(securityProperties.getOauth2().getClients())) &#123;</span><br><span class="line">        <span class="keyword">for</span> (OAuth2ClientProperties client : securityProperties.getOauth2().getClients()) &#123;</span><br><span class="line">            builder.withClient(client.getClientId())</span><br><span class="line">                    .secret(passwordEncoder.encode(client.getClientSecret()))</span><br><span class="line">                    .authorizedGrantTypes(<span class="string">"refresh_token"</span>, <span class="string">"authorization_code"</span>, <span class="string">"password"</span>)</span><br><span class="line">                    .accessTokenValiditySeconds(client.getAccessTokenValidateSeconds())</span><br><span class="line">                    .refreshTokenValiditySeconds(<span class="number">2592000</span>)</span><br><span class="line">                    .scopes(<span class="string">"all"</span>)</span><br><span class="line">                    .autoApprove(<span class="keyword">true</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> SpringBoot2.X </category>
+          
+          <category> Oauth2 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> SpringBoot2.X </tag>
+            
+            <tag> Oauth2 </tag>
+            
+            <tag> Unauthorized </tag>
+            
+            <tag> 401 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>SpringBoot2.x integration swagger2</title>
+      <link href="/2019/07/21/20190721-SpringBoot%20integration%20swagger2/"/>
+      <url>/2019/07/21/20190721-SpringBoot%20integration%20swagger2/</url>
+      
+        <content type="html"><![CDATA[<h1 id="环境说明"><a href="#环境说明" class="headerlink" title="环境说明"></a>环境说明</h1><ul><li>SpingBoot使用的是<code>2.0.7RELEASE</code>版本</li></ul><h1 id="一、配置POM文件"><a href="#一、配置POM文件" class="headerlink" title="一、配置POM文件"></a>一、配置POM文件</h1><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;io.springfox&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;springfox-swagger2&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;2.9.2&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;io.springfox&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;springfox-swagger-ui&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;2.9.2&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure><h1 id="二、配置Swagger2"><a href="#二、配置Swagger2" class="headerlink" title="二、配置Swagger2"></a>二、配置Swagger2</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Swagger配置类</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@EnableSwagger</span>2</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SwaggerConf</span> </span>&#123;</span><br><span class="line">  </span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Docket <span class="title">createRestApi</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Docket(DocumentationType.SWAGGER_2)</span><br><span class="line">                .apiInfo(apiInfo())</span><br><span class="line">                .select()</span><br><span class="line">                <span class="comment">// 扫描有ApiOperation注解的</span></span><br><span class="line">                .apis(RequestHandlerSelectors.withMethodAnnotation(ApiOperation.class)) </span><br><span class="line">                <span class="comment">// 扫描固定包</span></span><br><span class="line">                <span class="comment">// .apis(RequestHandlerSelectors.basePackage("com.xxx.controller"))</span></span><br><span class="line">                .paths(PathSelectors.any())</span><br><span class="line">                .build();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> ApiInfo <span class="title">apiInfo</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> ApiInfoBuilder()</span><br><span class="line">                .title(<span class="string">"Swagger2 Test API"</span>)</span><br><span class="line">                .version(<span class="string">"summer"</span>)</span><br><span class="line">                .build();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h1 id="三、Controller请求添加Swagger2"><a href="#三、Controller请求添加Swagger2" class="headerlink" title="三、Controller请求添加Swagger2"></a>三、Controller请求添加Swagger2</h1><h1 id="四、访问SwaggerUI"><a href="#四、访问SwaggerUI" class="headerlink" title="四、访问SwaggerUI"></a>四、访问SwaggerUI</h1><ul><li><p>访问路径<code>http://IP:端口/swagger-ui.html</code>会出现404无法读取到静态资源，控制台显示<code>No mapping found for HTTP request with URI [/swagger-ui.html] in DispatcherServlet with name &#39;dispatcherServlet&#39;</code></p></li><li><p>Spring-boot2.X以上在集成swagger时配置WebConfig不要extends WebMvcConfigurationSupport，需要修改为最新的implements WebMvcConfigurer然后配置静态资源访问的路径</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@EnableWebMvc</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CustomConfiguration</span> <span class="keyword">implements</span> <span class="title">WebMvcConfigurer</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 配置静态资源访问路径</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addResourceHandlers</span><span class="params">(ResourceHandlerRegistry registry)</span> </span>&#123;</span><br><span class="line">        registry.addResourceHandler(<span class="string">"/**"</span>)</span><br><span class="line">                .addResourceLocations(<span class="string">"classpath:/static/"</span>);</span><br><span class="line">        registry.addResourceHandler(<span class="string">"swagger-ui.html"</span>)</span><br><span class="line">                .addResourceLocations(<span class="string">"classpath:/META-INF/resources/"</span>);</span><br><span class="line">        registry.addResourceHandler(<span class="string">"/webjars/**"</span>)</span><br><span class="line">                .addResourceLocations(<span class="string">"classpath:/META-INF/resources/webjars/"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> SpringBoot2.x </category>
+          
+          <category> Swagger2 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> SpringBoot2.X </tag>
+            
+            <tag> Swagger2 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>NGINX add http_secure_link_module</title>
+      <link href="/2019/07/06/20190706-nginx-http-secure-link-module/"/>
+      <url>/2019/07/06/20190706-nginx-http-secure-link-module/</url>
+      
+        <content type="html"><![CDATA[<h1 id="NGINX的http-secure-link-module简单使用"><a href="#NGINX的http-secure-link-module简单使用" class="headerlink" title="NGINX的http_secure_link_module简单使用"></a>NGINX的http_secure_link_module简单使用</h1><p>环境说明：</p><ul><li>nginx安装目录<code>/usr/local/nginx</code></li><li>nginx编译安装的源码路径<code>/opt/nginx-1.16.0</code></li></ul><h2 id="一、查看已安装的NGINX配置信息"><a href="#一、查看已安装的NGINX配置信息" class="headerlink" title="一、查看已安装的NGINX配置信息"></a>一、查看已安装的NGINX配置信息</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/<span class="built_in">local</span>/nginx/sbin/nginx -V</span><br></pre></td></tr></table></figure><p><img src="http://src.clili.top/img/20190706191013.png" alt></p><p>​    复制保存configre arguments：中的内容<code>--prefix=/usr/local/nginx --with-http_stub_status_module --with-http_ssl_module --with-pcre</code></p><h2 id="二、停止正在运行的NGINX"><a href="#二、停止正在运行的NGINX" class="headerlink" title="二、停止正在运行的NGINX"></a>二、停止正在运行的NGINX</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/<span class="built_in">local</span>/nginx/sbin/nginx -s stop</span><br></pre></td></tr></table></figure><h2 id="三、备份NGINX"><a href="#三、备份NGINX" class="headerlink" title="三、备份NGINX"></a>三、备份NGINX</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mv /usr/<span class="built_in">local</span>/nginx/sbin/nginx /usr/<span class="built_in">local</span>/nginx/sbin/nginx.bak</span><br></pre></td></tr></table></figure><h2 id="四、编译前的配置"><a href="#四、编译前的配置" class="headerlink" title="四、编译前的配置"></a>四、编译前的配置</h2><p>​    在nginx源码目录下配置</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /opt/nginx-1.16.0</span><br><span class="line">./configure --prefix=/usr/local/nginx --with-http_stub_status_module --with-http_ssl_module --with-pcre --with-http_secure_link_module</span><br></pre></td></tr></table></figure><ul><li><code>./configure</code>后面的内容为上文复制保存的nginx配置信息，然后再补充<code>--with-http_secure_link_module</code></li></ul><h2 id="五、编译与拷贝"><a href="#五、编译与拷贝" class="headerlink" title="五、编译与拷贝"></a>五、编译与拷贝</h2><ul><li>使用<code>make</code>重新编译nginx，如果使用<code>make install</code>会替换掉<code>/usr/local/nginx</code>目录下的nginx</li><li>将<code>/opt/nginx-1.16.0/objs/nginx</code>目录下编译好的内容拷贝到<code>/usr/local/nginx/sbin/</code>目录下</li></ul><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">make</span><br><span class="line">cp /opt/nginx-1.16.0/objs/nginx /usr/local/nginx/sbin/</span><br></pre></td></tr></table></figure><h2 id="六、启动nginx并访问"><a href="#六、启动nginx并访问" class="headerlink" title="六、启动nginx并访问"></a>六、启动nginx并访问</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/nginx/sbin/nginx</span><br></pre></td></tr></table></figure><ul><li><p>使用<code>ps -ef|grep nginx</code>命令查看启动成功</p><p><img src="http://src.clili.top/img/20190706191445.png" alt></p></li><li><p>使用<code>curl -v localhost</code> 查看可以访问</p><p><img src="http://src.clili.top/img/20190706191600.png" alt></p></li></ul><h2 id="七、配置ngx-http-secure-link-module"><a href="#七、配置ngx-http-secure-link-module" class="headerlink" title="七、配置ngx_http_secure_link_module"></a>七、配置ngx_http_secure_link_module</h2><p>​    配置nginx.conf文件，具体配置信息参看<a href="https://nginx.org/en/docs/http/ngx_http_secure_link_module.html" target="_blank" rel="noopener">Module ngx_http_secure_link_module</a></p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"> server &#123;</span><br><span class="line">        listen       80;</span><br><span class="line">        server_name  localhost;</span><br><span class="line">        location /file/ &#123;</span><br><span class="line">            </span><br><span class="line">             secure_link $arg_token,$arg_expires;</span><br><span class="line">             secure_link_md5 "testSecret$secure_link_expires$uri";</span><br><span class="line"></span><br><span class="line">             if ($secure_link = "") &#123;</span><br><span class="line">                return 403;</span><br><span class="line">             &#125;</span><br><span class="line"></span><br><span class="line">             if ($secure_link = "0") &#123;</span><br><span class="line">                return 410;</span><br><span class="line">             &#125;</span><br><span class="line">             </span><br><span class="line">             alias /opt/;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>说明：</p><ul><li><p>/opt/路径下有secure.txt文件</p></li><li><p>原始文件的访问路径<a href="http://localhost/file/secure.txt" target="_blank" rel="noopener">http://localhost/file/secure.txt</a></p></li><li><p>使用安全<strong>ngx_http_secure_link_module</strong>的访问路径<a href="http://localhost/file/secure.txt?token=tgcX_v7FC6ivgXq75jJHYw&amp;expires=1562403799" target="_blank" rel="noopener">http://localhost/file/secure.txt?token=tgcX_v7FC6ivgXq75jJHYw&amp;expires=1562403799</a></p></li><li><p><code>&quot;testSecret$secure_link_expires$uri&quot;</code>中的<code>testSecret</code>自己配置，与生成请求URL中的secret要一致</p></li><li><p>URL中的token对应<code>$arg_token</code>,expires对应<code>$arg_expires</code></p></li></ul><p>检查配置文件的正确性并重新加载nginx.conf</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/nginx/sbin/nginx  -t -c /usr/local/nginx/conf/nginx.conf</span><br><span class="line">/usr/local/nginx/sbin/nginx  -s reload</span><br></pre></td></tr></table></figure><h2 id="八、JAVA版生成访问URL"><a href="#八、JAVA版生成访问URL" class="headerlink" title="八、JAVA版生成访问URL"></a>八、JAVA版生成访问URL</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">   *</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@param</span> url 资源的相对路径 如果请求路径为http://localhost/file/secure.txt 相对路径为/file/secure.txt</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@param</span> seconds URL的有效期秒数</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@param</span> secret 密签与nginx中配置的一致</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">generateToken</span><span class="params">(String url, Long seconds, String secret)</span></span>&#123;</span><br><span class="line">      <span class="comment">// 设置过期时间秒数</span></span><br><span class="line">      String time = String.valueOf(System.currentTimeMillis() / <span class="number">1000</span> + seconds);</span><br><span class="line">      <span class="comment">// 生成MD5校验码 字符串拼接的顺序要和nginx中配置的校验顺序一致 secret+time+url</span></span><br><span class="line">      <span class="keyword">byte</span>[] md5Str=DigestUtils.md5(StringUtils.join(secret,time,url));</span><br><span class="line">      String token= Base64.encodeBase64URLSafeString(md5Str);</span><br><span class="line">      <span class="keyword">return</span> StringUtils.join(url,TokenPrefix,token,ExpiresPrefix,time);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">      String urlToken=generateToken(<span class="string">"/file/secure.txt"</span>,<span class="number">2L</span>,<span class="string">"testSecret"</span>);</span><br><span class="line">      System.out.println(<span class="string">"http://localhost"</span>+urlToken);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure><ul><li><code>byte[] md5Str=DigestUtils.md5(StringUtils.join(secret,time,url));</code>这里的<code>(secret,time,url)</code>的拼接顺序一定要和nginx.conf文件中的<code>secure_link_md5 &quot;testSecret$secure_link_expires$uri&quot;;</code>顺序一致</li><li>参数<code>url</code>是请求资源的相对路径 如果请求路径为<a href="http://localhost/file/secure.txt" target="_blank" rel="noopener">http://localhost/file/secure.txt</a> 相对路径为/file/secure.txt</li><li>参数<code>seconds</code>请求URL的有效期秒数</li><li>参数<code>secret</code>密签与nginx中配置的一致</li></ul><p>然后就可以访问啦！！！</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> nginx </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> nginx </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Install NGINX</title>
+      <link href="/2019/07/06/20190706-nginx/"/>
+      <url>/2019/07/06/20190706-nginx/</url>
+      
+        <content type="html"><![CDATA[<h1 id="安装NGINX"><a href="#安装NGINX" class="headerlink" title="安装NGINX"></a>安装NGINX</h1><p>安装环境</p><ul><li>CentOS 7</li><li>NGINX-1.16.0</li></ul><h2 id="安装NGINX所需环境"><a href="#安装NGINX所需环境" class="headerlink" title="安装NGINX所需环境"></a>安装NGINX所需环境</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install make zlib zlib-devel gcc-c++ libtool  openssl openssl-devel</span><br></pre></td></tr></table></figure><h2 id="安装NGINX-1"><a href="#安装NGINX-1" class="headerlink" title="安装NGINX"></a>安装NGINX</h2><p>一、下载nginx压缩包</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://nginx.org/download/nginx-1.16.0.tar.gz</span><br></pre></td></tr></table></figure><p>二、解压</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf nginx-1.16.0.tar.gz</span><br></pre></td></tr></table></figure><p>三、进入解压之后的nginx文件夹</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd  nginx-1.16.0</span><br></pre></td></tr></table></figure><p>四、编译前的配置</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./configure --prefix=/usr/local/nginx  --with-http_stub_status_module --with-http_ssl_module --with-pcre</span><br></pre></td></tr></table></figure><ul><li><p><code>--prefix=/usr/local/nginx</code>指定NGINX安装到 /usr/local/nginx 目录下</p></li><li><p><code>--with-http-XXX</code>为nginx的模块，根据业务需求安装对应的模块</p><p>具体配置参看nginx官网的<a href="https://nginx.org/en/docs/configure.html" target="_blank" rel="noopener">Building nginx from Sources</a></p></li></ul><p>五、编译并安装</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">make</span><br><span class="line">make install</span><br></pre></td></tr></table></figure><p>六、查看安装的nginx信息</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/nginx/sbin/nginx -V</span><br></pre></td></tr></table></figure><p><img src="http://src.clili.top/img/20190706191013.png" alt></p><p>七、启动nginx</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/nginx/sbin/nginx</span><br></pre></td></tr></table></figure><p>八、查看nginx是否启动</p><ul><li><p>使用<code>ps -ef|grep nginx</code>命令查看</p><p><img src="http://src.clili.top/img/20190706191445.png" alt></p></li><li><p>使用<code>curl -v localhost</code> 查看</p><p><img src="http://src.clili.top/img/20190706191600.png" alt></p></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> nginx </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> nginx </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Chinese display scrambling in internationalized files</title>
+      <link href="/2019/06/30/20190630SpringBoot-Chinese%20display%20scrambling%20in%20internationalized%20files/"/>
+      <url>/2019/06/30/20190630SpringBoot-Chinese%20display%20scrambling%20in%20internationalized%20files/</url>
+      
+        <content type="html"><![CDATA[<h3 id="Question：SpringBoot中国际化Message的Properties文件中文显示乱码"><a href="#Question：SpringBoot中国际化Message的Properties文件中文显示乱码" class="headerlink" title="Question：SpringBoot中国际化Message的Properties文件中文显示乱码"></a>Question：SpringBoot中国际化Message的Properties文件中文显示乱码</h3><p><img src="http://src.clili.top/img/20190630173322.png" alt></p><h3 id="Solution："><a href="#Solution：" class="headerlink" title="Solution："></a>Solution：</h3><ul><li><p>如果使用的是Idea则设置Editor-File Encodings中的文件编码，如下图</p><p><img src="http://src.clili.top/img/20190630173734.png" alt></p></li></ul><p>⚠️文件编码改为UTF-8并要勾选Transparent native-to-ascli conversion选项</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> SpringBoot </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> i18n </tag>
+            
+            <tag> 国际化 </tag>
+            
+            <tag> 乱码 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Github repository configuration domain</title>
+      <link href="/2019/06/26/20190626-Github-repository-configuration-domain/"/>
+      <url>/2019/06/26/20190626-Github-repository-configuration-domain/</url>
+      
+        <content type="html"><![CDATA[<h1 id="如何给GitHub的仓库配置域名通过域名访问？"><a href="#如何给GitHub的仓库配置域名通过域名访问？" class="headerlink" title="如何给GitHub的仓库配置域名通过域名访问？"></a>如何给GitHub的仓库配置域名通过域名访问？</h1><h2 id="一、域名解析"><a href="#一、域名解析" class="headerlink" title="一、域名解析"></a>一、域名解析</h2><ul><li>使用阿里云的域名解析将域名指向到Github</li></ul><p><img src="http://src.clili.top/img/20190626135336.png" alt></p><h2 id="二、GitHub仓库中配置要绑定的域名"><a href="#二、GitHub仓库中配置要绑定的域名" class="headerlink" title="二、GitHub仓库中配置要绑定的域名"></a>二、GitHub仓库中配置要绑定的域名</h2><ul><li>打开GitHub需要绑定域名的仓库</li><li>进入仓库的Settings</li><li>选择分支并设置域名</li></ul><p><img src="http://src.clili.top/img/20190626135817.png" alt></p><h2 id="可以访问了！"><a href="#可以访问了！" class="headerlink" title="可以访问了！"></a>可以访问了！</h2>]]></content>
+      
+      
+      <categories>
+          
+          <category> Github </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Domain </tag>
+            
+            <tag> Github </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Close FOREIGN_KEY_CHECKS when MySQL import</title>
+      <link href="/2019/06/24/20190624-MySQL-Close-FOREIGN-KEY-CHECKS-when-mysql-import/"/>
+      <url>/2019/06/24/20190624-MySQL-Close-FOREIGN-KEY-CHECKS-when-mysql-import/</url>
+      
+        <content type="html"><![CDATA[<ul><li><p>MySQL导入数据库时先关闭外键约束检测，导入完成后再打开外键约束检测</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">CREATE DATABASE `DATA_BASE_NAME` DEFAULT CHARACTER SET utf8;</span><br><span class="line"></span><br><span class="line">USE `DATA_BASE_NAME`;</span><br><span class="line"></span><br><span class="line">-- CLOSE FOREIGN_KEY_CHECKS --</span><br><span class="line">SET FOREIGN_KEY_CHECKS=0;</span><br><span class="line"></span><br><span class="line">-- ----------------</span><br><span class="line">-- Table structure </span><br><span class="line">-- ----------------</span><br><span class="line"></span><br><span class="line">-- OPEN FOREIGN_KEY_CHECKS --</span><br><span class="line">SET FOREIGN_KEY_CHECKS=1;</span><br></pre></td></tr></table></figure></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> MySQL </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> MySQL </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Method of calling other scripts</title>
+      <link href="/2019/06/19/20190619Unity-Method%20of%20calling%20other%20scripts/"/>
+      <url>/2019/06/19/20190619Unity-Method%20of%20calling%20other%20scripts/</url>
+      
+        <content type="html"><![CDATA[<h2 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h2><ol><li><p>在A脚本中定义物体</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public GameObject bObj;</span><br></pre></td></tr></table></figure></li><li><p>在unity中将被调用脚本B所挂载的物体拖到<code>bObj</code>中</p></li><li><p>A脚本中使用<code>GetComponent&lt;&gt;</code>方法调用脚本B中的<code>Reward</code>方法</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bObj.GetComponent&lt;B&gt;().Reward()</span><br></pre></td></tr></table></figure></li></ol><h2 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h2><ol><li><p>定义静态变量 </p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public static GameManager Instance &#123; get; private set; &#125;</span><br></pre></td></tr></table></figure></li><li><p><code>Awake()</code> 赋值</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">void Awake()</span><br><span class="line">&#123;</span><br><span class="line">    if (Instance == null)</span><br><span class="line">    &#123;</span><br><span class="line">        Instance = this;</span><br><span class="line">    &#125;</span><br><span class="line">    else</span><br><span class="line">    &#123;</span><br><span class="line">        Destroy(Instance.gameObject);</span><br><span class="line">        Instance = this;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li><li><p><code>OnDestroy()</code> 赋值为 <code>null</code></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">void OnDestroy()</span><br><span class="line">&#123;</span><br><span class="line">    if (Instance == this</span><br><span class="line">    &#123;</span><br><span class="line">        Instance = null;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> Unity </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Unity </tag>
+            
+            <tag> Scripts </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Hello World</title>
+      <link href="/2019/06/15/hello-world/"/>
+      <url>/2019/06/15/hello-world/</url>
+      
+        <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+  
+  
+</search>

@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="Chinese display scrambling in internationalized files">
+<meta name="keywords" content="i18n,国际化,乱码">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Chinese display scrambling in internationalized files">
+<meta property="og:url" content="http://yoursite.com/2019/06/30/20190630SpringBoot-Chinese display scrambling in internationalized files/index.html">
+<meta property="og:site_name" content="SEVEN SEVEN">
+<meta property="og:description" content="Chinese display scrambling in internationalized files">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://src.clili.top/img/20190630173322.png">
+<meta property="og:image" content="http://src.clili.top/img/20190630173734.png">
+<meta property="og:updated_time" content="2019-06-30T09:43:33.393Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chinese display scrambling in internationalized files">
+<meta name="twitter:description" content="Chinese display scrambling in internationalized files">
+<meta name="twitter:image" content="http://src.clili.top/img/20190630173322.png">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>Chinese display scrambling in internationalized files</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 LTR">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Articles</a></li>
+         
+          <li><a href="/tags/">Tags</a></li>
+         
+          <li><a href="/categories/">Categories</a></li>
+        
+      </ul>
+    </span>
+    <br>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2019/07/06/20190706-nginx/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2019/06/26/20190626-Github-repository-configuration-domain/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/06/30/20190630SpringBoot-Chinese display scrambling in internationalized files/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/06/30/20190630SpringBoot-Chinese display scrambling in internationalized files/&text=Chinese display scrambling in internationalized files"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/06/30/20190630SpringBoot-Chinese display scrambling in internationalized files/&title=Chinese display scrambling in internationalized files"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/06/30/20190630SpringBoot-Chinese display scrambling in internationalized files/&is_video=false&description=Chinese display scrambling in internationalized files"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Chinese display scrambling in internationalized files&body=Check out this article: http://yoursite.com/2019/06/30/20190630SpringBoot-Chinese display scrambling in internationalized files/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/06/30/20190630SpringBoot-Chinese display scrambling in internationalized files/&title=Chinese display scrambling in internationalized files"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/06/30/20190630SpringBoot-Chinese display scrambling in internationalized files/&title=Chinese display scrambling in internationalized files"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/06/30/20190630SpringBoot-Chinese display scrambling in internationalized files/&title=Chinese display scrambling in internationalized files"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/06/30/20190630SpringBoot-Chinese display scrambling in internationalized files/&title=Chinese display scrambling in internationalized files"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/06/30/20190630SpringBoot-Chinese display scrambling in internationalized files/&name=Chinese display scrambling in internationalized files&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Question：SpringBoot中国际化Message的Properties文件中文显示乱码"><span class="toc-number">1.</span> <span class="toc-text">Question：SpringBoot中国际化Message的Properties文件中文显示乱码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Solution："><span class="toc-number">2.</span> <span class="toc-text">Solution：</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Chinese display scrambling in internationalized files
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">SEVEN SEVEN</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2019-06-30T05:41:52.000Z" itemprop="datePublished">2019-06-30</time>
+        
+        (Updated: <time datetime="2019-06-30T09:43:33.393Z" itemprop="dateModified">2019-06-30</time>)
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/SpringBoot/">SpringBoot</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/i18n/">i18n</a>, <a class="tag-link" href="/tags/乱码/">乱码</a>, <a class="tag-link" href="/tags/国际化/">国际化</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h3 id="Question：SpringBoot中国际化Message的Properties文件中文显示乱码"><a href="#Question：SpringBoot中国际化Message的Properties文件中文显示乱码" class="headerlink" title="Question：SpringBoot中国际化Message的Properties文件中文显示乱码"></a>Question：SpringBoot中国际化Message的Properties文件中文显示乱码</h3><p><img src="http://src.clili.top/img/20190630173322.png" alt></p>
+<h3 id="Solution："><a href="#Solution：" class="headerlink" title="Solution："></a>Solution：</h3><ul>
+<li><p>如果使用的是Idea则设置Editor-File Encodings中的文件编码，如下图</p>
+<p><img src="http://src.clili.top/img/20190630173734.png" alt></p>
+</li>
+</ul>
+<p>⚠️文件编码改为UTF-8并要勾选Transparent native-to-ascli conversion选项</p>
+
+  </div>
+</article>
+
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the comments.</noscript>
+        </div>
+    </div>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Articles</a></li>
+         
+          <li><a href="/tags/">Tags</a></li>
+         
+          <li><a href="/categories/">Categories</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Question：SpringBoot中国际化Message的Properties文件中文显示乱码"><span class="toc-number">1.</span> <span class="toc-text">Question：SpringBoot中国际化Message的Properties文件中文显示乱码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Solution："><span class="toc-number">2.</span> <span class="toc-text">Solution：</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/06/30/20190630SpringBoot-Chinese display scrambling in internationalized files/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/06/30/20190630SpringBoot-Chinese display scrambling in internationalized files/&text=Chinese display scrambling in internationalized files"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/06/30/20190630SpringBoot-Chinese display scrambling in internationalized files/&title=Chinese display scrambling in internationalized files"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/06/30/20190630SpringBoot-Chinese display scrambling in internationalized files/&is_video=false&description=Chinese display scrambling in internationalized files"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Chinese display scrambling in internationalized files&body=Check out this article: http://yoursite.com/2019/06/30/20190630SpringBoot-Chinese display scrambling in internationalized files/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/06/30/20190630SpringBoot-Chinese display scrambling in internationalized files/&title=Chinese display scrambling in internationalized files"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/06/30/20190630SpringBoot-Chinese display scrambling in internationalized files/&title=Chinese display scrambling in internationalized files"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/06/30/20190630SpringBoot-Chinese display scrambling in internationalized files/&title=Chinese display scrambling in internationalized files"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/06/30/20190630SpringBoot-Chinese display scrambling in internationalized files/&title=Chinese display scrambling in internationalized files"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/06/30/20190630SpringBoot-Chinese display scrambling in internationalized files/&name=Chinese display scrambling in internationalized files&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2019 Zhengxi Cao
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Articles</a></li>
+         
+          <li><a href="/tags/">Tags</a></li>
+         
+          <li><a href="/categories/">Categories</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+    <!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+    <script type="text/javascript">
+        var disqus_shortname = 'blog-clili-top';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script>
+
+
+</body>
+</html>

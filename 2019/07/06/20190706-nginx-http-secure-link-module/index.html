@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="NGINX add http_secure_link_module">
+<meta name="keywords" content="nginx">
+<meta property="og:type" content="article">
+<meta property="og:title" content="NGINX add http_secure_link_module">
+<meta property="og:url" content="http://yoursite.com/2019/07/06/20190706-nginx-http-secure-link-module/index.html">
+<meta property="og:site_name" content="SEVEN SEVEN">
+<meta property="og:description" content="NGINX add http_secure_link_module">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://src.clili.top/img/20190706191013.png">
+<meta property="og:image" content="http://src.clili.top/img/20190706191445.png">
+<meta property="og:image" content="http://src.clili.top/img/20190706191600.png">
+<meta property="og:updated_time" content="2019-07-28T11:10:50.770Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="NGINX add http_secure_link_module">
+<meta name="twitter:description" content="NGINX add http_secure_link_module">
+<meta name="twitter:image" content="http://src.clili.top/img/20190706191013.png">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>NGINX add http_secure_link_module</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 LTR">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Articles</a></li>
+         
+          <li><a href="/tags/">Tags</a></li>
+         
+          <li><a href="/categories/">Categories</a></li>
+        
+      </ul>
+    </span>
+    <br>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2019/07/21/20190721-SpringBoot integration swagger2/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2019/07/06/20190706-nginx/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/07/06/20190706-nginx-http-secure-link-module/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/07/06/20190706-nginx-http-secure-link-module/&text=NGINX add http_secure_link_module"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/07/06/20190706-nginx-http-secure-link-module/&title=NGINX add http_secure_link_module"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/07/06/20190706-nginx-http-secure-link-module/&is_video=false&description=NGINX add http_secure_link_module"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=NGINX add http_secure_link_module&body=Check out this article: http://yoursite.com/2019/07/06/20190706-nginx-http-secure-link-module/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/07/06/20190706-nginx-http-secure-link-module/&title=NGINX add http_secure_link_module"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/07/06/20190706-nginx-http-secure-link-module/&title=NGINX add http_secure_link_module"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/07/06/20190706-nginx-http-secure-link-module/&title=NGINX add http_secure_link_module"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/07/06/20190706-nginx-http-secure-link-module/&title=NGINX add http_secure_link_module"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/07/06/20190706-nginx-http-secure-link-module/&name=NGINX add http_secure_link_module&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#NGINX的http-secure-link-module简单使用"><span class="toc-number">1.</span> <span class="toc-text">NGINX的http_secure_link_module简单使用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、查看已安装的NGINX配置信息"><span class="toc-number">1.1.</span> <span class="toc-text">一、查看已安装的NGINX配置信息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、停止正在运行的NGINX"><span class="toc-number">1.2.</span> <span class="toc-text">二、停止正在运行的NGINX</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、备份NGINX"><span class="toc-number">1.3.</span> <span class="toc-text">三、备份NGINX</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、编译前的配置"><span class="toc-number">1.4.</span> <span class="toc-text">四、编译前的配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#五、编译与拷贝"><span class="toc-number">1.5.</span> <span class="toc-text">五、编译与拷贝</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#六、启动nginx并访问"><span class="toc-number">1.6.</span> <span class="toc-text">六、启动nginx并访问</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#七、配置ngx-http-secure-link-module"><span class="toc-number">1.7.</span> <span class="toc-text">七、配置ngx_http_secure_link_module</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#八、JAVA版生成访问URL"><span class="toc-number">1.8.</span> <span class="toc-text">八、JAVA版生成访问URL</span></a></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        NGINX add http_secure_link_module
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">SEVEN SEVEN</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2019-07-06T11:19:07.000Z" itemprop="datePublished">2019-07-06</time>
+        
+        (Updated: <time datetime="2019-07-28T11:10:50.770Z" itemprop="dateModified">2019-07-28</time>)
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/nginx/">nginx</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/nginx/">nginx</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h1 id="NGINX的http-secure-link-module简单使用"><a href="#NGINX的http-secure-link-module简单使用" class="headerlink" title="NGINX的http_secure_link_module简单使用"></a>NGINX的http_secure_link_module简单使用</h1><p>环境说明：</p>
+<ul>
+<li>nginx安装目录<code>/usr/local/nginx</code></li>
+<li>nginx编译安装的源码路径<code>/opt/nginx-1.16.0</code></li>
+</ul>
+<h2 id="一、查看已安装的NGINX配置信息"><a href="#一、查看已安装的NGINX配置信息" class="headerlink" title="一、查看已安装的NGINX配置信息"></a>一、查看已安装的NGINX配置信息</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/<span class="built_in">local</span>/nginx/sbin/nginx -V</span><br></pre></td></tr></table></figure>
+
+<p><img src="http://src.clili.top/img/20190706191013.png" alt></p>
+<p>​    复制保存configre arguments：中的内容<code>--prefix=/usr/local/nginx --with-http_stub_status_module --with-http_ssl_module --with-pcre</code></p>
+<h2 id="二、停止正在运行的NGINX"><a href="#二、停止正在运行的NGINX" class="headerlink" title="二、停止正在运行的NGINX"></a>二、停止正在运行的NGINX</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/<span class="built_in">local</span>/nginx/sbin/nginx -s stop</span><br></pre></td></tr></table></figure>
+
+<h2 id="三、备份NGINX"><a href="#三、备份NGINX" class="headerlink" title="三、备份NGINX"></a>三、备份NGINX</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mv /usr/<span class="built_in">local</span>/nginx/sbin/nginx /usr/<span class="built_in">local</span>/nginx/sbin/nginx.bak</span><br></pre></td></tr></table></figure>
+
+<h2 id="四、编译前的配置"><a href="#四、编译前的配置" class="headerlink" title="四、编译前的配置"></a>四、编译前的配置</h2><p>​    在nginx源码目录下配置</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /opt/nginx-1.16.0</span><br><span class="line">./configure --prefix=/usr/local/nginx --with-http_stub_status_module --with-http_ssl_module --with-pcre --with-http_secure_link_module</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>./configure</code>后面的内容为上文复制保存的nginx配置信息，然后再补充<code>--with-http_secure_link_module</code></li>
+</ul>
+<h2 id="五、编译与拷贝"><a href="#五、编译与拷贝" class="headerlink" title="五、编译与拷贝"></a>五、编译与拷贝</h2><ul>
+<li>使用<code>make</code>重新编译nginx，如果使用<code>make install</code>会替换掉<code>/usr/local/nginx</code>目录下的nginx</li>
+<li>将<code>/opt/nginx-1.16.0/objs/nginx</code>目录下编译好的内容拷贝到<code>/usr/local/nginx/sbin/</code>目录下</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">make</span><br><span class="line">cp /opt/nginx-1.16.0/objs/nginx /usr/local/nginx/sbin/</span><br></pre></td></tr></table></figure>
+
+<h2 id="六、启动nginx并访问"><a href="#六、启动nginx并访问" class="headerlink" title="六、启动nginx并访问"></a>六、启动nginx并访问</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/nginx/sbin/nginx</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>使用<code>ps -ef|grep nginx</code>命令查看启动成功</p>
+<p><img src="http://src.clili.top/img/20190706191445.png" alt></p>
+</li>
+<li><p>使用<code>curl -v localhost</code> 查看可以访问</p>
+<p><img src="http://src.clili.top/img/20190706191600.png" alt></p>
+</li>
+</ul>
+<h2 id="七、配置ngx-http-secure-link-module"><a href="#七、配置ngx-http-secure-link-module" class="headerlink" title="七、配置ngx_http_secure_link_module"></a>七、配置ngx_http_secure_link_module</h2><p>​    配置nginx.conf文件，具体配置信息参看<a href="https://nginx.org/en/docs/http/ngx_http_secure_link_module.html" target="_blank" rel="noopener">Module ngx_http_secure_link_module</a></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"> server &#123;</span><br><span class="line">        listen       80;</span><br><span class="line">        server_name  localhost;</span><br><span class="line">        location /file/ &#123;</span><br><span class="line">            </span><br><span class="line">             secure_link $arg_token,$arg_expires;</span><br><span class="line">             secure_link_md5 "testSecret$secure_link_expires$uri";</span><br><span class="line"></span><br><span class="line">             if ($secure_link = "") &#123;</span><br><span class="line">                return 403;</span><br><span class="line">             &#125;</span><br><span class="line"></span><br><span class="line">             if ($secure_link = "0") &#123;</span><br><span class="line">                return 410;</span><br><span class="line">             &#125;</span><br><span class="line">             </span><br><span class="line">             alias /opt/;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>说明：</p>
+<ul>
+<li><p>/opt/路径下有secure.txt文件</p>
+</li>
+<li><p>原始文件的访问路径<a href="http://localhost/file/secure.txt" target="_blank" rel="noopener">http://localhost/file/secure.txt</a></p>
+</li>
+<li><p>使用安全<strong>ngx_http_secure_link_module</strong>的访问路径<a href="http://localhost/file/secure.txt?token=tgcX_v7FC6ivgXq75jJHYw&amp;expires=1562403799" target="_blank" rel="noopener">http://localhost/file/secure.txt?token=tgcX_v7FC6ivgXq75jJHYw&amp;expires=1562403799</a></p>
+</li>
+<li><p><code>&quot;testSecret$secure_link_expires$uri&quot;</code>中的<code>testSecret</code>自己配置，与生成请求URL中的secret要一致</p>
+</li>
+<li><p>URL中的token对应<code>$arg_token</code>,expires对应<code>$arg_expires</code></p>
+</li>
+</ul>
+<p>检查配置文件的正确性并重新加载nginx.conf</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/nginx/sbin/nginx  -t -c /usr/local/nginx/conf/nginx.conf</span><br><span class="line">/usr/local/nginx/sbin/nginx  -s reload</span><br></pre></td></tr></table></figure>
+
+<h2 id="八、JAVA版生成访问URL"><a href="#八、JAVA版生成访问URL" class="headerlink" title="八、JAVA版生成访问URL"></a>八、JAVA版生成访问URL</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">   *</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@param</span> url 资源的相对路径 如果请求路径为http://localhost/file/secure.txt 相对路径为/file/secure.txt</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@param</span> seconds URL的有效期秒数</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@param</span> secret 密签与nginx中配置的一致</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">generateToken</span><span class="params">(String url, Long seconds, String secret)</span></span>&#123;</span><br><span class="line">      <span class="comment">// 设置过期时间秒数</span></span><br><span class="line">      String time = String.valueOf(System.currentTimeMillis() / <span class="number">1000</span> + seconds);</span><br><span class="line">      <span class="comment">// 生成MD5校验码 字符串拼接的顺序要和nginx中配置的校验顺序一致 secret+time+url</span></span><br><span class="line">      <span class="keyword">byte</span>[] md5Str=DigestUtils.md5(StringUtils.join(secret,time,url));</span><br><span class="line">      String token= Base64.encodeBase64URLSafeString(md5Str);</span><br><span class="line">      <span class="keyword">return</span> StringUtils.join(url,TokenPrefix,token,ExpiresPrefix,time);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">      String urlToken=generateToken(<span class="string">"/file/secure.txt"</span>,<span class="number">2L</span>,<span class="string">"testSecret"</span>);</span><br><span class="line">      System.out.println(<span class="string">"http://localhost"</span>+urlToken);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>byte[] md5Str=DigestUtils.md5(StringUtils.join(secret,time,url));</code>这里的<code>(secret,time,url)</code>的拼接顺序一定要和nginx.conf文件中的<code>secure_link_md5 &quot;testSecret$secure_link_expires$uri&quot;;</code>顺序一致</li>
+<li>参数<code>url</code>是请求资源的相对路径 如果请求路径为<a href="http://localhost/file/secure.txt" target="_blank" rel="noopener">http://localhost/file/secure.txt</a> 相对路径为/file/secure.txt</li>
+<li>参数<code>seconds</code>请求URL的有效期秒数</li>
+<li>参数<code>secret</code>密签与nginx中配置的一致</li>
+</ul>
+<p>然后就可以访问啦！！！</p>
+
+  </div>
+</article>
+
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the comments.</noscript>
+        </div>
+    </div>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Articles</a></li>
+         
+          <li><a href="/tags/">Tags</a></li>
+         
+          <li><a href="/categories/">Categories</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#NGINX的http-secure-link-module简单使用"><span class="toc-number">1.</span> <span class="toc-text">NGINX的http_secure_link_module简单使用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、查看已安装的NGINX配置信息"><span class="toc-number">1.1.</span> <span class="toc-text">一、查看已安装的NGINX配置信息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、停止正在运行的NGINX"><span class="toc-number">1.2.</span> <span class="toc-text">二、停止正在运行的NGINX</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、备份NGINX"><span class="toc-number">1.3.</span> <span class="toc-text">三、备份NGINX</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、编译前的配置"><span class="toc-number">1.4.</span> <span class="toc-text">四、编译前的配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#五、编译与拷贝"><span class="toc-number">1.5.</span> <span class="toc-text">五、编译与拷贝</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#六、启动nginx并访问"><span class="toc-number">1.6.</span> <span class="toc-text">六、启动nginx并访问</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#七、配置ngx-http-secure-link-module"><span class="toc-number">1.7.</span> <span class="toc-text">七、配置ngx_http_secure_link_module</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#八、JAVA版生成访问URL"><span class="toc-number">1.8.</span> <span class="toc-text">八、JAVA版生成访问URL</span></a></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/07/06/20190706-nginx-http-secure-link-module/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/07/06/20190706-nginx-http-secure-link-module/&text=NGINX add http_secure_link_module"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/07/06/20190706-nginx-http-secure-link-module/&title=NGINX add http_secure_link_module"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/07/06/20190706-nginx-http-secure-link-module/&is_video=false&description=NGINX add http_secure_link_module"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=NGINX add http_secure_link_module&body=Check out this article: http://yoursite.com/2019/07/06/20190706-nginx-http-secure-link-module/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/07/06/20190706-nginx-http-secure-link-module/&title=NGINX add http_secure_link_module"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/07/06/20190706-nginx-http-secure-link-module/&title=NGINX add http_secure_link_module"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/07/06/20190706-nginx-http-secure-link-module/&title=NGINX add http_secure_link_module"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/07/06/20190706-nginx-http-secure-link-module/&title=NGINX add http_secure_link_module"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/07/06/20190706-nginx-http-secure-link-module/&name=NGINX add http_secure_link_module&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2019 Zhengxi Cao
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Articles</a></li>
+         
+          <li><a href="/tags/">Tags</a></li>
+         
+          <li><a href="/categories/">Categories</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+    <!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+    <script type="text/javascript">
+        var disqus_shortname = 'blog-clili-top';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script>
+
+
+</body>
+</html>
