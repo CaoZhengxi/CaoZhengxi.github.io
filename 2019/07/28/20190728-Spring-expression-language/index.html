@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="Spring expression language">
+<meta name="keywords" content="SPEL">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spring expression language">
+<meta property="og:url" content="http://yoursite.com/2019/07/28/20190728-Spring-expression-language/index.html">
+<meta property="og:site_name" content="SEVEN SEVEN">
+<meta property="og:description" content="Spring expression language">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-08-03T12:29:15.310Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Spring expression language">
+<meta name="twitter:description" content="Spring expression language">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>Spring expression language</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 LTR">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Articles</a></li>
+         
+          <li><a href="/tags/">Tags</a></li>
+         
+          <li><a href="/categories/">Categories</a></li>
+        
+      </ul>
+    </span>
+    <br>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2019/07/31/20190731-SpringBoot-Set-locale-context/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2019/07/28/20190728-SpringBoot-ConfigurationProperties-and-Value/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/07/28/20190728-Spring-expression-language/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/07/28/20190728-Spring-expression-language/&text=Spring expression language"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/07/28/20190728-Spring-expression-language/&title=Spring expression language"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/07/28/20190728-Spring-expression-language/&is_video=false&description=Spring expression language"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Spring expression language&body=Check out this article: http://yoursite.com/2019/07/28/20190728-Spring-expression-language/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/07/28/20190728-Spring-expression-language/&title=Spring expression language"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/07/28/20190728-Spring-expression-language/&title=Spring expression language"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/07/28/20190728-Spring-expression-language/&title=Spring expression language"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/07/28/20190728-Spring-expression-language/&title=Spring expression language"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/07/28/20190728-Spring-expression-language/&name=Spring expression language&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-文本表达式"><span class="toc-number">1.</span> <span class="toc-text">1 文本表达式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-对象属性表达式"><span class="toc-number">2.</span> <span class="toc-text">2 对象属性表达式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-数组、List-和-Map-表达式"><span class="toc-number">3.</span> <span class="toc-text">3 数组、List 和 Map 表达式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-方法表达式"><span class="toc-number">4.</span> <span class="toc-text">4 方法表达式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-操作符表达式"><span class="toc-number">5.</span> <span class="toc-text">5 操作符表达式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#5-1-关系操作符"><span class="toc-number">5.1.</span> <span class="toc-text">5.1 关系操作符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-2-逻辑操作符"><span class="toc-number">5.2.</span> <span class="toc-text">5.2 逻辑操作符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-3-运算操作符"><span class="toc-number">5.3.</span> <span class="toc-text">5.3 运算操作符</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6-安全导航操作符"><span class="toc-number">6.</span> <span class="toc-text">6 安全导航操作符</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#7-三元操作符"><span class="toc-number">7.</span> <span class="toc-text">7 三元操作符</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#8-Elvis-操作符"><span class="toc-number">8.</span> <span class="toc-text">8 Elvis 操作符</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#9-赋值表达式"><span class="toc-number">9.</span> <span class="toc-text">9 赋值表达式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#10-类型操作符"><span class="toc-number">10.</span> <span class="toc-text">10 类型操作符</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#11-创建对象操作符"><span class="toc-number">11.</span> <span class="toc-text">11 创建对象操作符</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#12-变量表达式"><span class="toc-number">12.</span> <span class="toc-text">12 变量表达式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#13-集合选择表达式"><span class="toc-number">13.</span> <span class="toc-text">13 集合选择表达式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#14-集合元素布尔判断"><span class="toc-number">14.</span> <span class="toc-text">14 集合元素布尔判断</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Spring expression language
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">SEVEN SEVEN</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2019-07-28T12:27:35.000Z" itemprop="datePublished">2019-07-28</time>
+        
+        (Updated: <time datetime="2019-08-03T12:29:15.310Z" itemprop="dateModified">2019-08-03</time>)
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/Spring/">Spring</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/SPEL/">SPEL</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h1 id="1-文本表达式"><a href="#1-文本表达式" class="headerlink" title="1 文本表达式"></a>1 文本表达式</h1><p>文本表达式支持字符串、 日期 、 数字（正数 、 实数及十六进制数） 、 布尔类型及 null。其中的字符表达式可使用单引号来表示，形如：<code>&#39;Deniro&#39;</code>。如果表达式中包含单引号或者双引号字符，那么可以使用转义字符 <code>/</code>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">ExpressionParser parser</span><br><span class="line">        = new SpelExpressionParser();</span><br><span class="line"></span><br><span class="line">//字符串解析</span><br><span class="line">String str = (String) parser.parseExpression(&quot;&apos;你好&apos;&quot;).getValue();</span><br><span class="line">System.out.println(str);</span><br><span class="line"></span><br><span class="line">//整型解析</span><br><span class="line">int intVal = (Integer) parser.parseExpression(&quot;0x2F&quot;).getValue();</span><br><span class="line">System.out.println(intVal);</span><br><span class="line"></span><br><span class="line">//双精度浮点型解析</span><br><span class="line">double doubleVal = (Double) parser.parseExpression(&quot;4329759E+22&quot;).getValue();</span><br><span class="line">System.out.println(doubleVal);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//布尔型解析</span><br><span class="line">boolean booleanVal = (boolean) parser.parseExpression(&quot;true&quot;).getValue();</span><br><span class="line">System.out.println(booleanVal);</span><br></pre></td></tr></table></figure>
+
+<p>输出结果：</p>
+<blockquote>
+<p>你好<br>47<br>4.329759E28<br>true</p>
+</blockquote>
+<p>数字支持负数 、小数、科学记数法、八进制数和十六进制数 。 默认情况下，实数使用 <code>Double.parseDouble()</code> 进行表达式类型转换 。</p>
+<h1 id="2-对象属性表达式"><a href="#2-对象属性表达式" class="headerlink" title="2 对象属性表达式"></a>2 对象属性表达式</h1><p>在 SpEL 中，我们可以使用对象属性路径（形如<code>类名.属性名.属性名</code>）来访问对象属性的值。</p>
+<p>假设有一个账号类，Account.java：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">public class Account &#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    private String name;</span><br><span class="line">    private int footballCount;</span><br><span class="line">    private Friend friend;</span><br><span class="line"></span><br><span class="line">    public Account(String name) &#123;</span><br><span class="line">        this.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public String getName() &#123;</span><br><span class="line">        return name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setFootballCount(int footballCount) &#123;</span><br><span class="line">        this.footballCount = footballCount;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void addFriend(Friend friend) &#123;</span><br><span class="line"></span><br><span class="line">        this.friend = friend;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public int getFootballCount() &#123;</span><br><span class="line">        return footballCount;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public Friend getFriend() &#123;</span><br><span class="line">        return friend;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>它包含姓名 name、足球数 footballCount 和一个朋友 friend 属性。friend 属性是一个 Friend 类：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public class Friend &#123;</span><br><span class="line">    private String name;</span><br><span class="line"></span><br><span class="line">    public Friend(String name) &#123;</span><br><span class="line">        this.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public String getName() &#123;</span><br><span class="line">        return name;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>解析对象属性表达式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">//初始化对象</span><br><span class="line">Account account=new Account(&quot;Deniro&quot;);</span><br><span class="line">account.setFootballCount(10);</span><br><span class="line">account.addFriend(new Friend(&quot;Jack&quot;));</span><br><span class="line"></span><br><span class="line">//解析器</span><br><span class="line">ExpressionParser parser</span><br><span class="line">        = new SpelExpressionParser();</span><br><span class="line">//解析上下文</span><br><span class="line">EvaluationContext context=new StandardEvaluationContext(account);</span><br><span class="line"></span><br><span class="line">//获取不同类型的属性</span><br><span class="line">String ).getValue(context);</span><br><span class="line">System.out.println(name);</span><br><span class="line">int count= (Integer) parser.parseExpression(&quot;footballCount+1&quot;).getValue(context);</span><br><span class="line">System.out.println(count);</span><br><span class="line"></span><br><span class="line">//获取嵌套类中的属性</span><br><span class="line">String friend= (String) parser.parseExpression(&quot;friend.name&quot;).getValue(context);</span><br><span class="line">System.out.println(friend);</span><br></pre></td></tr></table></figure>
+
+<p>输出结果：</p>
+<blockquote>
+<p>Deniro<br>11<br>Jack</p>
+</blockquote>
+<ol>
+<li>SpEL 解析器适应力强，属性名首字母大小写均可。</li>
+<li>解析对象表达式时，需要传入 EvaluationContext 上下文参数。</li>
+</ol>
+<h1 id="3-数组、List-和-Map-表达式"><a href="#3-数组、List-和-Map-表达式" class="headerlink" title="3 数组、List 和 Map 表达式"></a>3 数组、List 和 Map 表达式</h1><p>数组表达式支持 Java 创建数组的语法，形如 <code>new int[]{3,4,5}</code>，数组项之间以逗号作为分隔符。<strong>注意：</strong>目前还不支持多维数组。Map 表达式以键值对的方式来定义，形如 <code>{name:&#39;deniro&#39;,footballCount:10}</code>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">//解析器</span><br><span class="line">ExpressionParser parser</span><br><span class="line">        = new SpelExpressionParser();</span><br><span class="line"></span><br><span class="line">//解析一维数组</span><br><span class="line">int[] oneArray = (int[]) parser.parseExpression(&quot;new int[]&#123;3,4,5&#125;&quot;).getValue();</span><br><span class="line">System.out.println(&quot;一维数组开始：&quot;);</span><br><span class="line">for (int i : oneArray) &#123;</span><br><span class="line">    System.out.println(i);</span><br><span class="line">&#125;</span><br><span class="line">System.out.println(&quot;一维数组结束&quot;);</span><br><span class="line"></span><br><span class="line">//这里会抛出 SpelParseException</span><br><span class="line">//        int[][] twoArray = (int[][]) parser.parseExpression(&quot;new int[][]&#123;3,4,5&#125;&#123;3,4,5&#125;&quot;)</span><br><span class="line">//                .getValue();</span><br><span class="line"></span><br><span class="line">//解析 list</span><br><span class="line">List list = (List) parser.parseExpression(&quot;&#123;3,4,5&#125;&quot;).getValue();</span><br><span class="line">System.out.println(&quot;list:&quot; + list);</span><br><span class="line"></span><br><span class="line">//解析 Map</span><br><span class="line">Map map = (Map) parser.parseExpression(&quot;&#123;account:&apos;deniro&apos;,footballCount:10&#125;&quot;)</span><br><span class="line">        .getValue();</span><br><span class="line">System.out.println(&quot;map:&quot; + map);</span><br><span class="line"></span><br><span class="line">//解析对象中的 list</span><br><span class="line">final Account account = new Account(&quot;Deniro&quot;);</span><br><span class="line">Friend friend1 = new Friend(&quot;Jack&quot;);</span><br><span class="line">Friend friend2 = new Friend(&quot;Rose&quot;);</span><br><span class="line">List&lt;Friend&gt; friends = new ArrayList&lt;&gt;();</span><br><span class="line">friends.add(friend1);</span><br><span class="line">friends.add(friend2);</span><br><span class="line">account.setFriends(friends);</span><br><span class="line">EvaluationContext context = new StandardEvaluationContext(account);</span><br><span class="line">String friendName = (String) parser.parseExpression(&quot;friends[0].name&quot;)</span><br><span class="line">        .getValue(context);</span><br><span class="line">System.out.println(&quot;friendName:&quot; + friendName);</span><br></pre></td></tr></table></figure>
+
+<p>从数组与 List 获取值，可以在括号内指定索引来获取，形如上例中的 <code>friends[0]</code>。Map 中可通过键名来获取，形如 <code>xxx[&#39;xxx&#39;]</code>。</p>
+<p>输出结果：</p>
+<blockquote>
+<p>一维数组开始：<br>3  
+4<br>5  
+一维数组结束<br>list:[3, 4, 5]<br>map:{account=deniro, footballCount=10}<br>friendName:Jack</p>
+</blockquote>
+<h1 id="4-方法表达式"><a href="#4-方法表达式" class="headerlink" title="4 方法表达式"></a>4 方法表达式</h1><p>SpEL 支持调用有访问权限的方法，这些方法包括对象方法、静态方法，而且支持可变方法参数。除此之外，还可以调用 String 类型中的所有可访问方法，比如 <code>String.contains(&#39;xxx&#39;)</code>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">//解析器</span><br><span class="line">ExpressionParser parser</span><br><span class="line">        = new SpelExpressionParser();</span><br><span class="line"></span><br><span class="line">//调用 String 方法</span><br><span class="line">boolean isEmpty = parser.parseExpression(&quot;&apos;Hi,everybody&apos;.contains(&apos;Hi&apos;)&quot;).getValue</span><br><span class="line">        (Boolean</span><br><span class="line">                .class);</span><br><span class="line">System.out.println(&quot;isEmpty:&quot; + isEmpty);</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * 调用对象相关方法</span><br><span class="line"> */</span><br><span class="line">final Account account = new Account(&quot;Deniro&quot;);</span><br><span class="line">EvaluationContext context = new StandardEvaluationContext(account);</span><br><span class="line"></span><br><span class="line">//调用公开方法</span><br><span class="line">parser.parseExpression(&quot;setFootballCount(11)&quot;).getValue(context, Boolean</span><br><span class="line">        .class);</span><br><span class="line">System.out.println(&quot;getFootballCount:&quot; + account.getFootballCount());</span><br><span class="line"></span><br><span class="line">//调用私有方法，抛出 SpelEvaluationException: EL1004E: Method call: Method write() cannot be found on net.deniro.spring4.spel.Account type</span><br><span class="line">//        parser.parseExpression(&quot;write()&quot;).getValue(context,Boolean</span><br><span class="line">//                .class);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//调用静态方法</span><br><span class="line">parser.parseExpression(&quot;read()&quot;).getValue(context, Boolean</span><br><span class="line">        .class);</span><br><span class="line"></span><br><span class="line">//调用待可变参数的方法</span><br><span class="line">parser.parseExpression(&quot;addFriendNames(&apos;Jack&apos;,&apos;Rose&apos;)&quot;).getValue(context, Boolean</span><br><span class="line">        .class);</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意：</strong>调用对象的私有方法会抛出异常。</p>
+<p>输出结果：</p>
+<blockquote>
+<p>isEmpty:true<br>getFootballCount:11<br>读书<br>friendName:Jack<br>friendName:Rose</p>
+</blockquote>
+<h1 id="5-操作符表达式"><a href="#5-操作符表达式" class="headerlink" title="5 操作符表达式"></a>5 操作符表达式</h1><h2 id="5-1-关系操作符"><a href="#5-1-关系操作符" class="headerlink" title="5.1 关系操作符"></a>5.1 关系操作符</h2><p>SpEL 支持 Java 标准操作符：等于、不等于、小于、小等于、大于、大等于、正则表达式和 instanceof 操作符。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">//解析器</span><br><span class="line">ExpressionParser parser</span><br><span class="line">        = new SpelExpressionParser();</span><br><span class="line"></span><br><span class="line">//数值比较</span><br><span class="line">boolean result=parser.parseExpression(&quot;2&gt;1&quot;).getValue(Boolean.class);</span><br><span class="line">System.out.println(&quot;2&gt;1:&quot;+result);</span><br><span class="line"></span><br><span class="line">//字符串比较</span><br><span class="line">result=parser.parseExpression(&quot;&apos;z&apos;&gt;&apos;a&apos;&quot;).getValue(Boolean.class);</span><br><span class="line">System.out.println(&quot;&apos;z&apos;&gt;&apos;a&apos;:&quot;+result);</span><br><span class="line"></span><br><span class="line">//instanceof 运算符</span><br><span class="line">result=parser.parseExpression(&quot;&apos;str&apos; instanceof T(String)&quot;).getValue(Boolean.class);</span><br><span class="line">System.out.println(&quot;&apos;str&apos; 是否为字符串 :&quot;+result);</span><br><span class="line"></span><br><span class="line">result=parser.parseExpression(&quot;1 instanceof T(Integer)&quot;).getValue(Boolean.class);</span><br><span class="line">System.out.println(&quot;1 是否为整型 :&quot;+result);</span><br><span class="line"></span><br><span class="line">//正则表达式</span><br><span class="line">result=parser.parseExpression(&quot;22 matches &apos;\\d&#123;2&#125;&apos;&quot;).getValue(Boolean.class);</span><br><span class="line">System.out.println(&quot;22 是否为两位数字 :&quot;+result);</span><br></pre></td></tr></table></figure>
+
+<p>输出结果：</p>
+<blockquote>
+<p>2&gt;1:true<br>‘z’&gt;’a’:true<br>‘str’ 是否为字符串 :true<br>1 是否为整型 :true<br>22 是否为两位数字 :true</p>
+</blockquote>
+<ol>
+<li>instanceof 操作符后面是类型表达式，格式为 <code>T(Java 包装器类型）</code>，如整型 <code>T(Integer)</code>。<strong>注意：</strong>不能使用原生类型，如果这样 <code>T(int)</code> 会返回错误的判断结果。</li>
+<li>matches 用于定义正则表达式，之后跟着单引号包裹着的正则表达式。</li>
+</ol>
+<h2 id="5-2-逻辑操作符"><a href="#5-2-逻辑操作符" class="headerlink" title="5.2 逻辑操作符"></a>5.2 逻辑操作符</h2><p>逻辑操作符支持以下操作：</p>
+<table>
+<thead>
+<tr>
+<th>逻辑操作符</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>and 或 <code>&amp;&amp;</code></td>
+<td>与操作</td>
+</tr>
+<tr>
+<td>or 或 `</td>
+<td></td>
+</tr>
+<tr>
+<td><code>!</code></td>
+<td>非操作</td>
+</tr>
+</tbody></table>
+<p><strong>注意：</strong> 在 SpEL 中，不仅支持 Java 标准的逻辑操作符，还支持 and 与 or 关键字。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">//解析器</span><br><span class="line">ExpressionParser parser</span><br><span class="line">        = new SpelExpressionParser();</span><br><span class="line"></span><br><span class="line">//与操作</span><br><span class="line">boolean result=parser.parseExpression(&quot;true &amp;&amp; true&quot;).getValue(Boolean.class);</span><br><span class="line">System.out.println(&quot;与操作:&quot;+result);</span><br><span class="line"></span><br><span class="line">//或操作</span><br><span class="line">result=parser.parseExpression(&quot;true || false&quot;).getValue(Boolean.class);</span><br><span class="line">System.out.println(&quot;或操作:&quot;+result);</span><br><span class="line"></span><br><span class="line">parser.parseExpression(&quot;true or false&quot;).getValue(Boolean.class);</span><br><span class="line">System.out.println(&quot;或操作(or 关键字）:&quot;+result);</span><br><span class="line"></span><br><span class="line">//非操作</span><br><span class="line">result=parser.parseExpression(&quot;!false&quot;).getValue(Boolean.class);</span><br><span class="line">System.out.println(&quot;非操作:&quot;+result);</span><br><span class="line"></span><br><span class="line">//抛出 SpelEvaluationException: EL1001E: Type conversion problem, cannot convert from java.lang.Integer to java.lang.Boolean</span><br><span class="line">//parser.parseExpression(&quot;!0&quot;).getValue(Boolean.class);</span><br></pre></td></tr></table></figure>
+
+<p>输出结果：</p>
+<blockquote>
+<p>与操作: true<br>或操作: true<br>或操作 (or 关键字）:true<br>非操作: true</p>
+</blockquote>
+<p><strong>注意：</strong>逻辑操作符前后运算结果必须是布尔类型，否则会抛出 SpelEvaluationException。</p>
+<h2 id="5-3-运算操作符"><a href="#5-3-运算操作符" class="headerlink" title="5.3 运算操作符"></a>5.3 运算操作符</h2><p>SpEL 支持 Java 运算操作符，并遵守运算符优先级规则：</p>
+<table>
+<thead>
+<tr>
+<th>运算操作符</th>
+<th>说明</th>
+<th>支持的操作数类型</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>+</td>
+<td>加法</td>
+<td>数字、字符串或日期</td>
+</tr>
+<tr>
+<td>-</td>
+<td>减法</td>
+<td>数字或日期</td>
+</tr>
+<tr>
+<td>*</td>
+<td>乘法</td>
+<td>数字</td>
+</tr>
+<tr>
+<td><code>/</code></td>
+<td>除法</td>
+<td>数字</td>
+</tr>
+<tr>
+<td>%</td>
+<td>取模</td>
+<td>数字</td>
+</tr>
+<tr>
+<td>^</td>
+<td>指数幂</td>
+<td>数字</td>
+</tr>
+</tbody></table>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">//加法运算</span><br><span class="line">Integer iResult = parser.parseExpression(&quot;2+3&quot;).getValue(Integer.class);</span><br><span class="line">System.out.println(&quot;加法运算：&quot; + iResult);</span><br><span class="line"></span><br><span class="line">String sResult = parser.parseExpression(&quot;&apos;Hi,&apos;+&apos;everybody&apos;&quot;).getValue(String.class);</span><br><span class="line">System.out.println(&quot;字符串拼接运算：&quot; + sResult);</span><br><span class="line"></span><br><span class="line">//减法运算</span><br><span class="line">iResult = parser.parseExpression(&quot;2-3&quot;).getValue(Integer.class);</span><br><span class="line">System.out.println(&quot;减法运算：&quot; + iResult);</span><br><span class="line"></span><br><span class="line">//乘法运算</span><br><span class="line">iResult = parser.parseExpression(&quot;2*3&quot;).getValue(Integer.class);</span><br><span class="line">System.out.println(&quot;乘法运算：&quot; + iResult);</span><br><span class="line"></span><br><span class="line">//除法运算</span><br><span class="line">iResult = parser.parseExpression(&quot;4/2&quot;).getValue(Integer.class);</span><br><span class="line">System.out.println(&quot;除法运算：&quot; + iResult);</span><br><span class="line"></span><br><span class="line">Double dResult = parser.parseExpression(&quot;4/2.5&quot;).getValue(Double.class);</span><br><span class="line">System.out.println(&quot;除法运算：&quot; + dResult);</span><br><span class="line"></span><br><span class="line">//求余运算</span><br><span class="line">iResult = parser.parseExpression(&quot;5%2&quot;).getValue(Integer.class);</span><br><span class="line">System.out.println(&quot;求余运算：&quot; + iResult);</span><br></pre></td></tr></table></figure>
+
+<p>输出结果：</p>
+<blockquote>
+<p>加法运算：5<br>字符串拼接运算：Hi,everybody<br>减法运算：-1<br>乘法运算：6<br>除法运算：2<br>除法运算：1.6<br>求余运算：1</p>
+</blockquote>
+<h1 id="6-安全导航操作符"><a href="#6-安全导航操作符" class="headerlink" title="6 安全导航操作符"></a>6 安全导航操作符</h1><p>安全导航操作符来源于 Groovy 语言，使用它能够避免空指针异常。一般在访问对象时，需要验证该对象是否为空，使用安全导航操作符就能避免繁琐的空对象验证方法。它的格式是在获取对象属性操作符 “<code>.</code>” 之前加一个 “<code>?</code>”。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">final Account account = new Account(&quot;Deniro&quot;);</span><br><span class="line">account.addFriend(new Friend(&quot;Jack&quot;));</span><br><span class="line"></span><br><span class="line">//解析器</span><br><span class="line">ExpressionParser parser</span><br><span class="line">        = new SpelExpressionParser();</span><br><span class="line">EvaluationContext context = new StandardEvaluationContext(account);</span><br><span class="line"></span><br><span class="line">String friendfriend?.name&quot;).getValue(context,String</span><br><span class="line">        .class);</span><br><span class="line">System.out.println(&quot;friendName:&quot;+friendName);</span><br><span class="line"></span><br><span class="line">//设置为 null</span><br><span class="line">account.setFriend(null);</span><br><span class="line">friendfriend?.name&quot;).getValue(context,String</span><br><span class="line">        .class);</span><br><span class="line">//打印出 null</span><br><span class="line">System.out.println(&quot;friendName:&quot; + friendName);</span><br></pre></td></tr></table></figure>
+
+<p>输出结果：</p>
+<blockquote>
+<p>friendName:Jack<br>friendName:null</p>
+</blockquote>
+<p>这里会先判断 friend 对象是否为空；如果为空，则返回 “null” 字符串；否则返回需要的属性值。</p>
+<h1 id="7-三元操作符"><a href="#7-三元操作符" class="headerlink" title="7 三元操作符"></a>7 三元操作符</h1><p>SpEL 支持标准的 Java 三元操作符：<code>&lt;表达式 1&gt;?&lt;表达式 2&gt;:&lt;表达式 3&gt;</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ExpressionParser parser</span><br><span class="line">        = new SpelExpressionParser();</span><br><span class="line"></span><br><span class="line">boolean result=parser.parseExpression(&quot;(1+2) == 3?true:false&quot;).getValue(Boolean</span><br><span class="line">        .class);</span><br><span class="line">System.out.println(&quot;result:&quot;+result);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出结果：</p>
+<blockquote>
+<p>result:true</p>
+</blockquote>
+<h1 id="8-Elvis-操作符"><a href="#8-Elvis-操作符" class="headerlink" title="8 Elvis 操作符"></a>8 Elvis 操作符</h1><p>Elvis 操作符是在 Groovy 中使用的三元操作符简化版。</p>
+<p>在三元操作符中，我们一般需要写两次变量名，比如下面代码段中的 title：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">String title=&quot;News&quot;;</span><br><span class="line">String actualTitle=(title!=null)?title:&quot;tip&quot;;</span><br></pre></td></tr></table></figure>
+
+<p>使用 Elvis 操作符后，可以将上述代码段简写为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">title?:&quot;tip&quot;</span><br></pre></td></tr></table></figure>
+
+<p>SpEL 支持的 Elvis 操作符格式是：<code>&lt;var&gt;?:&lt;value&gt;</code>，如果 var 变量为 null，那就取 value 值，否则就取自身的值。所以 Elvis 操作符很适合用于设置默认值。</p>
+<p>示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">final Account account = new Account(&quot;Deniro&quot;);</span><br><span class="line"></span><br><span class="line">//解析器</span><br><span class="line">ExpressionParser parser</span><br><span class="line">        = new SpelExpressionParser();</span><br><span class="line">EvaluationContext context = new StandardEvaluationContext(account);</span><br><span class="line"></span><br><span class="line">String friendname?:&apos;无名&apos;&quot;).getValue(context,String</span><br><span class="line">        .class);</span><br><span class="line">System.out.println(&quot;friendName:&quot;+friendName);</span><br><span class="line"></span><br><span class="line">//设置名字为 null</span><br><span class="line">account.setName(null);</span><br><span class="line">friendname?:&apos;无名&apos;&quot;).getValue(context,String</span><br><span class="line">        .class);</span><br><span class="line">System.out.println(&quot;friendName:&quot; + friendName);</span><br></pre></td></tr></table></figure>
+
+<p>输出结果：</p>
+<blockquote>
+<p>friendName:Deniro<br>friendName: 无名</p>
+</blockquote>
+<h1 id="9-赋值表达式"><a href="#9-赋值表达式" class="headerlink" title="9 赋值表达式"></a>9 赋值表达式</h1><p>可以通过赋值表达式来设置属性的值，效果等同于调用 setValue() 方法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">final Account account = new Account(&quot;Deniro&quot;);</span><br><span class="line"></span><br><span class="line">//解析器</span><br><span class="line">ExpressionParser parser</span><br><span class="line">        = new SpelExpressionParser();</span><br><span class="line">EvaluationContext context = new StandardEvaluationContext(account);</span><br><span class="line"></span><br><span class="line">String ).getValue(context,String</span><br><span class="line">        .class);</span><br><span class="line">System.out.println(&quot;name:&quot;+name);</span><br></pre></td></tr></table></figure>
+
+<h1 id="10-类型操作符"><a href="#10-类型操作符" class="headerlink" title="10 类型操作符"></a>10 类型操作符</h1><p>类型操作符 T 可以从类路径加载指定类名称（全限定名）所对应的 Class 的实例，格式为：<code>T(全限定类名)</code>，效果等同于 <code>ClassLoader#loadClass()</code>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">ExpressionParser parser</span><br><span class="line">        = new SpelExpressionParser();</span><br><span class="line"></span><br><span class="line">//加载 java.lang.Integer</span><br><span class="line">Class integerClass=parser.parseExpression(&quot;T(Integer)&quot;).getValue(Class</span><br><span class="line">        .class);</span><br><span class="line">System.out.println(integerClass==java.lang.Integer.class);</span><br><span class="line"></span><br><span class="line">//加载 net.deniro.spring4.spel.Account</span><br><span class="line">Class accountClass=parser.parseExpression(&quot;T(net.deniro.spring4.spel.Account)&quot;)</span><br><span class="line">        .getValue(Class</span><br><span class="line">                .class);</span><br><span class="line">System.out.println(accountClass==net.deniro.spring4.spel.Account.class);</span><br><span class="line"></span><br><span class="line">//调用类静态方法</span><br><span class="line">double result = (double) parser.parseExpression(&quot;T(Math).abs(-2.5)&quot;).getValue();</span><br><span class="line">System.out.println(&quot;result:&quot; + result);</span><br></pre></td></tr></table></figure>
+
+<p>输出结果：</p>
+<blockquote>
+<p>true<br>true<br>result:2.5</p>
+</blockquote>
+<p>我们还可以直接通过 T 操作符调用类的静态方法，格式为 <code>T(全限定类名).静态方法名</code>，比如上面例子中求某数的绝对值 <code>T(Math).abs(-2.5)</code>。</p>
+<p>SpEL 中会使用 StandardTypeLocator#findType() 方法来加载类。 findType 方法定义如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">public Class&lt;?&gt; findType(String typeName) throws EvaluationException &#123;</span><br><span class="line">        String nameToLookup = typeName;</span><br><span class="line">        try &#123;</span><br><span class="line">            return ClassUtils.forName(nameToLookup, this.classLoader);</span><br><span class="line">        &#125;</span><br><span class="line">        catch (ClassNotFoundException ey) &#123;</span><br><span class="line">            // try any registered prefixes before giving up</span><br><span class="line">        &#125;</span><br><span class="line">        for (String prefix : this.knownPackagePrefixes) &#123;</span><br><span class="line">            try &#123;</span><br><span class="line">                nameToLookup = prefix + &apos;.&apos; + typeName;</span><br><span class="line">                return ClassUtils.forName(nameToLookup, this.classLoader);</span><br><span class="line">            &#125;</span><br><span class="line">            catch (ClassNotFoundException ex) &#123;</span><br><span class="line">                // might be a different prefix</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        throw new SpelEvaluationException(SpelMessage.TYPE_NOT_FOUND, typeName);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>尝试直接加载类。</li>
+<li>如果找不到，则尝试从已注册的包前缀（java.lang）下加载类。所以如果需要加载的类在 java.lang 下，那么可以直接写类名。</li>
+<li>如果都找不到，则抛出 SpelEvaluationException 异常。</li>
+</ol>
+<h1 id="11-创建对象操作符"><a href="#11-创建对象操作符" class="headerlink" title="11 创建对象操作符"></a>11 创建对象操作符</h1><p>可以使用 new 操作符来创建一个新对象 。 除了基本类型（如整型、布尔型等）和字符串之外，创建其它类需要指明全限定类名 (包括包路径) 。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Account account=parser.parseExpression(&quot;new net.deniro.spring4.spel.Account&quot; +</span><br><span class="line">    &quot;(&apos;Deniro&apos;)&quot;).getValue(Account.class);</span><br><span class="line">System.out.println(&quot;name:&quot;+account.getName());</span><br></pre></td></tr></table></figure>
+
+<p>输出结果：</p>
+<blockquote>
+<p>name:Deniro</p>
+</blockquote>
+<h1 id="12-变量表达式"><a href="#12-变量表达式" class="headerlink" title="12 变量表达式"></a>12 变量表达式</h1><p>可以通过 <code>#变量名</code> 来引用在 EvaluationContext 中定义的变量。通过 <code>EvaluationContext#setVariable(name, val)</code> 即可定义新的变量；name 表示变量名，val 表示变量值。</p>
+<p>如果变量是集合，比如 list，那么可以通过 <code>#scores.[#this]</code> 来引用集合中的元素。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">Account account = new Account(&quot;Deniro&quot;);</span><br><span class="line"></span><br><span class="line">ExpressionParser parser</span><br><span class="line">        = new SpelExpressionParser();</span><br><span class="line">EvaluationContext context = new StandardEvaluationContext(account);</span><br><span class="line"></span><br><span class="line">//定义一个新变量，名为 newVal</span><br><span class="line">context.setVariable(&quot;newVal&quot;, &quot;Jack&quot;);</span><br><span class="line"></span><br><span class="line">//获取变量 newVal 的值，并赋值给 User 的 name 属性</span><br><span class="line">parser.parseExpression(&quot;).getValue(context);</span><br><span class="line">System.out.println(&quot;getName:&quot; + account.getName());</span><br><span class="line"></span><br><span class="line">//this 操作符表示集合中的某个元素</span><br><span class="line">List&lt;Double&gt; scores = new ArrayList&lt;&gt;();</span><br><span class="line">scores.addAll(Arrays.asList(23.1, 82.3, 55.9));</span><br><span class="line">context.setVariable(&quot;scores&quot;, scores);//在上下文中定义 scores 变量</span><br><span class="line">List&lt;Double&gt; scoresGreat80 = (List&lt;Double&gt;) parser.parseExpression(&quot;#scores.?[#this&gt;80]&quot;)</span><br><span class="line">        .getValue(context);</span><br><span class="line">System.out.println(&quot;scoresGreat80:&quot; + scoresGreat80);</span><br></pre></td></tr></table></figure>
+
+<p>输出结果：</p>
+<blockquote>
+<p>getName:Jack<br>scoresGreate80:[82.3]</p>
+</blockquote>
+<h1 id="13-集合选择表达式"><a href="#13-集合选择表达式" class="headerlink" title="13 集合选择表达式"></a>13 集合选择表达式</h1><p>可以使用选择表达式来过滤集合，从而生成一个新的符合选择条件的集合 。它的语法是 <code>?[selectionExpression]</code>。选择符合条件的结果集的第一个元素的语法为 <code>^ [selectionExpression]</code> ，选择最后一个元素的语法为 <code>$[selectionExpression]</code>。选择表达式也可应用于 Map 。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">//过滤 list 集合中的元素</span><br><span class="line">final StandardEvaluationContext listContext = new</span><br><span class="line">        StandardEvaluationContext(list);</span><br><span class="line">List&lt;Integer&gt; great4List = (List&lt;Integer&gt;) parser.parseExpression(&quot;?[#this&gt;4]&quot;)</span><br><span class="line">        .getValue(listContext);</span><br><span class="line">System.out.println(&quot;great4List:&quot; + great4List);</span><br><span class="line"></span><br><span class="line">//获取匹配元素中的第一个值</span><br><span class="line">Integer first = (Integer) parser.parseExpression(&quot;^[#this&gt;2]&quot;)</span><br><span class="line">        .getValue(listContext);</span><br><span class="line">System.out.println(&quot;first:&quot; + first);</span><br><span class="line"></span><br><span class="line">//获取匹配元素中的最后一个值</span><br><span class="line">Integer end = (Integer) parser.parseExpression(&quot;$[#this&gt;2]&quot;)</span><br><span class="line">        .getValue(listContext);</span><br><span class="line">System.out.println(&quot;end:&quot; + end);</span><br></pre></td></tr></table></figure>
+
+<p>输出结果：</p>
+<blockquote>
+<p>list:[3, 4, 5]<br>great4List:[5]<br>first:3<br>end:5</p>
+</blockquote>
+<p>对于 List 和 Set ，是针对集合中的每一个元素进行比较的；而对于 Map，则可以指定是元素的键（key）还是元素的值进行比较的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">//过滤 Map</span><br><span class="line">Map&lt;String, Double&gt; rank = new HashMap&lt;&gt;();</span><br><span class="line">rank.put(&quot;Deniro&quot;, 96.5);</span><br><span class="line">rank.put(&quot;Jack&quot;, 85.3);</span><br><span class="line">rank.put(&quot;Lily&quot;, 91.1);</span><br><span class="line">context.setVariable(&quot;Rank&quot;, rank);</span><br><span class="line"></span><br><span class="line">//value 大于 90</span><br><span class="line">Map&lt;String,Double&gt; rankGreat95= (Map&lt;String, Double&gt;) parser.parseExpression</span><br><span class="line">        (&quot;#Rank.?[value&gt;90]&quot;).getValue(context);</span><br><span class="line">System.out.println(&quot;rankGreat95:&quot; + rankGreat95);</span><br><span class="line"></span><br><span class="line">//key 按字母顺序，排在 L 后面</span><br><span class="line">Map&lt;String,Double&gt; afterL= (Map&lt;String, Double&gt;) parser.parseExpression</span><br><span class="line">        (&quot;#Rank.?[key&gt;&apos;L&apos;]&quot;).getValue(context);</span><br><span class="line">System.out.println(&quot;afterL:&quot;+afterL);</span><br></pre></td></tr></table></figure>
+
+<p>输出结果：</p>
+<blockquote>
+<p>rankGreat95:{Deniro=96.5, Lily=91.1}<br>nameOrder:{Lily=91.1}</p>
+</blockquote>
+<h1 id="14-集合元素布尔判断"><a href="#14-集合元素布尔判断" class="headerlink" title="14 集合元素布尔判断"></a>14 集合元素布尔判断</h1><p>通过表达式 <code>![projectionExpression]</code>，我们可以判断集合中每一个元素是否符合表达式规则。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">List list = (List) parser.parseExpression(&quot;&#123;3,4,5&#125;&quot;).getValue();</span><br><span class="line">System.out.println(&quot;list:&quot; + list);</span><br><span class="line">   List&lt;Boolean&gt; isgreat4=(List&lt;Boolean&gt;)parser.parseExpression(&quot;![#this&gt;3]&quot;)</span><br><span class="line">        .getValue(list);</span><br><span class="line">System.out.println(&quot;isgreat4:&quot; + isgreat4);</span><br></pre></td></tr></table></figure>
+
+<p>输出结果：</p>
+<blockquote>
+<p>isgreat4:[false, true, true]</p>
+</blockquote>
+<p>也可以对 Map 对象进行类似判断。</p>
+<blockquote>
+<p>原文地址 <a href="https://www.jianshu.com/p/5537b2c86acd" target="_blank" rel="noopener">https://www.jianshu.com/p/5537b2c86acd</a></p>
+</blockquote>
+
+  </div>
+</article>
+
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the comments.</noscript>
+        </div>
+    </div>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Articles</a></li>
+         
+          <li><a href="/tags/">Tags</a></li>
+         
+          <li><a href="/categories/">Categories</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-文本表达式"><span class="toc-number">1.</span> <span class="toc-text">1 文本表达式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-对象属性表达式"><span class="toc-number">2.</span> <span class="toc-text">2 对象属性表达式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-数组、List-和-Map-表达式"><span class="toc-number">3.</span> <span class="toc-text">3 数组、List 和 Map 表达式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-方法表达式"><span class="toc-number">4.</span> <span class="toc-text">4 方法表达式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-操作符表达式"><span class="toc-number">5.</span> <span class="toc-text">5 操作符表达式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#5-1-关系操作符"><span class="toc-number">5.1.</span> <span class="toc-text">5.1 关系操作符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-2-逻辑操作符"><span class="toc-number">5.2.</span> <span class="toc-text">5.2 逻辑操作符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-3-运算操作符"><span class="toc-number">5.3.</span> <span class="toc-text">5.3 运算操作符</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6-安全导航操作符"><span class="toc-number">6.</span> <span class="toc-text">6 安全导航操作符</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#7-三元操作符"><span class="toc-number">7.</span> <span class="toc-text">7 三元操作符</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#8-Elvis-操作符"><span class="toc-number">8.</span> <span class="toc-text">8 Elvis 操作符</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#9-赋值表达式"><span class="toc-number">9.</span> <span class="toc-text">9 赋值表达式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#10-类型操作符"><span class="toc-number">10.</span> <span class="toc-text">10 类型操作符</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#11-创建对象操作符"><span class="toc-number">11.</span> <span class="toc-text">11 创建对象操作符</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#12-变量表达式"><span class="toc-number">12.</span> <span class="toc-text">12 变量表达式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#13-集合选择表达式"><span class="toc-number">13.</span> <span class="toc-text">13 集合选择表达式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#14-集合元素布尔判断"><span class="toc-number">14.</span> <span class="toc-text">14 集合元素布尔判断</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/07/28/20190728-Spring-expression-language/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/07/28/20190728-Spring-expression-language/&text=Spring expression language"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/07/28/20190728-Spring-expression-language/&title=Spring expression language"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/07/28/20190728-Spring-expression-language/&is_video=false&description=Spring expression language"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Spring expression language&body=Check out this article: http://yoursite.com/2019/07/28/20190728-Spring-expression-language/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/07/28/20190728-Spring-expression-language/&title=Spring expression language"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/07/28/20190728-Spring-expression-language/&title=Spring expression language"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/07/28/20190728-Spring-expression-language/&title=Spring expression language"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/07/28/20190728-Spring-expression-language/&title=Spring expression language"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/07/28/20190728-Spring-expression-language/&name=Spring expression language&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2019 Zhengxi Cao
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Articles</a></li>
+         
+          <li><a href="/tags/">Tags</a></li>
+         
+          <li><a href="/categories/">Categories</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+    <!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+    <script type="text/javascript">
+        var disqus_shortname = 'blog-clili-top';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script>
+
+
+</body>
+</html>
